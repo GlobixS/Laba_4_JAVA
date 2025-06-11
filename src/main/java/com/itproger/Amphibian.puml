@@ -1,0 +1,66 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+
+@startuml
+skinparam classAttributeIconSize 0
+skinparam classBackgroundColor #F9F9F9
+skinparam interfaceBackgroundColor #DFFFD6
+skinparam classFontSize 14
+
+' === Основний клас Amphibian та внутрішній клас ===
+class Amphibian {
+  - name: String
+  - age: int
+  +Amphibian(name: String, age: int)
+  +speak(): void
+}
+
+class Skin {
+  - isMoist: boolean
+  +Skin(isMoist: boolean)
+  +describe(): void
+}
+
+Amphibian *-- Skin : «inner»
+
+' === Оточення — асоціація ===
+class Environment {
+  - type: String
+  +Environment(type: String)
+  +getType(): String
+}
+
+Amphibian --> Environment : «association»
+
+' === Біолог — має локальний клас ===
+class Biologist {
+  +observe(amphibian: Amphibian): void
+}
+
+
+Biologist ..> Amphibian : «aggregation»
+
+' === Вкладений статичний клас ===
+class InfoBook {
+}
+
+class AmphibianInfo {
+  +printInfo(): void
+}
+
+InfoBook +-- AmphibianInfo : «static nested»
+
+' === Точка входу ===
+class Main {
+  +main(args: String[]): void
+}
+
+Main --> Amphibian
+Main --> Environment
+Main --> Biologist
+Main --> InfoBook
+
+@enduml
+
+@enduml
