@@ -8,7 +8,7 @@ skinparam classBackgroundColor #F9F9F9
 skinparam interfaceBackgroundColor #DFFFD6
 skinparam classFontSize 14
 
-' === Основний клас Amphibian та внутрішній клас ===
+
 class Amphibian {
   - name: String
   - age: int
@@ -24,7 +24,7 @@ class Skin {
 
 Amphibian *-- Skin : «inner»
 
-' === Оточення — асоціація ===
+' Оточення — асоціація 
 class Environment {
   - type: String
   +Environment(type: String)
@@ -33,7 +33,7 @@ class Environment {
 
 Amphibian --> Environment : «association»
 
-' === Біолог — має локальний клас ===
+'Біолог — має локальний клас 
 class Biologist {
   +observe(amphibian: Amphibian): void
 }
@@ -41,7 +41,6 @@ class Biologist {
 
 Biologist ..> Amphibian : «aggregation»
 
-' === Вкладений статичний клас ===
 class InfoBook {
 }
 
@@ -51,7 +50,7 @@ class AmphibianInfo {
 
 InfoBook +-- AmphibianInfo : «static nested»
 
-' === Точка входу ===
+'Точка входу
 class Main {
   +main(args: String[]): void
 }
